@@ -6,6 +6,7 @@ package es.medac.tema17.practica.mascotas.controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -25,5 +26,14 @@ public class ConexionSQL {
             System.out.println("Conexion errónea "+e.toString());
         }
         return conexion;
+    }
+    
+    public void cerrarConexion(){
+        try{
+            this.conexion.close();
+            
+        } catch (SQLException ex){
+            System.out.println("No se ha podido cerrar la conexión");
+        }
     }
 }
