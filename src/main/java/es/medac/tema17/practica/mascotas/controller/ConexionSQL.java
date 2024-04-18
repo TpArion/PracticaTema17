@@ -4,10 +4,26 @@
  */
 package es.medac.tema17.practica.mascotas.controller;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *
  * @author Andrés
  */
 public class ConexionSQL {
+    protected Connection conexion;
+    String url = "jdbc:mysql://localhost:3306/clientes";
+    String usuario = "Admin";
+    String pwd = "admin12345678.";
     
+    public Connection getConnection(){
+        try{
+            conexion = (Connection) DriverManager.getConnection(url, usuario, pwd);
+            System.out.println("Conexion establecida");
+        } catch (Exception e) {
+            System.out.println("Conexion errónea "+e.toString());
+        }
+        return conexion;
+    }
 }
