@@ -29,7 +29,9 @@ public class MascotasApp {
         //con1.insertarMascotas(1, 1, "Perico", "Cacatua", 
          //       "Alba", "Marrón", "2020-04-25", 2);
          
-         con1.insertarPesos(1, "2020-10-01", 40);
+         //con1.insertarPesos(1, "2020-10-01", 40);
          //System.out.println(con1.listadoPacientes());
+         //con1.eliminarMascota(1);
+         con1.insertarVacunas(1, "2020-11-11", "Sifilis", "2021-11-10");
     }
 }

@@ -120,7 +120,7 @@ public class ConsultasMascotasApp {
         PreparedStatement ps = null;
         boolean actualizacionExitosa = false;
         try{
-            String sql = "DELETE FROM pacientes WHERE IdMascota = ?";
+            String sql = "DELETE FROM pacientes WHERE IdMascotas = ?";
             ps = conexion.prepareStatement(sql);
             ps.setInt(1, IdMascota);
             
@@ -226,6 +226,40 @@ public class ConsultasMascotasApp {
         return InserccionExitosa;
      
     }
+    public boolean eliminarCliente(int IdCliente){
+        PreparedStatement ps = null;
+        boolean actualizacionExitosa = false;
+        try{
+            String sql = "DELETE FROM clientes WHERE IdCliente = ?";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdCliente);
+            
+            
+            int filasEliminadas = ps.executeUpdate();
+            if (filasEliminadas > 0){
+                 System.out.println("Actualización exitosa");
+                 actualizacionExitosa= true;
+             } else {
+                 System.out.println("No se encontró al cliente con id: "+IdCliente);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido eliminar la fila: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                    
+                }
+            }
+         }
+         return actualizacionExitosa;
+        
+        
+    }
     ////////////////////////////////////////////////////////////////////////
     
     ////////////////////////////////////////////////////////////////////////
@@ -301,6 +335,40 @@ public class ConsultasMascotasApp {
             }
          }
          return actualizacionExitosa;
+    }
+    public boolean eliminarPesos(int IdMascota){
+        PreparedStatement ps = null;
+        boolean actualizacionExitosa = false;
+        try{
+            String sql = "DELETE FROM pesos WHERE IdMascotas = ?";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdMascota);
+            
+            
+            int filasEliminadas = ps.executeUpdate();
+            if (filasEliminadas > 0){
+                 System.out.println("Actualización exitosa");
+                 actualizacionExitosa= true;
+             } else {
+                 System.out.println("No se encontró al paciente con id: "+IdMascota);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido eliminar la fila: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                    
+                }
+            }
+         }
+         return actualizacionExitosa;
+        
+        
     }
     //////////////////////////////////////////////////////////////////////////
     
@@ -379,6 +447,40 @@ public class ConsultasMascotasApp {
             }
          }
          return actualizacionExitosa;
+    }
+    public boolean eliminarVacunas(int IdMascota){
+        PreparedStatement ps = null;
+        boolean actualizacionExitosa = false;
+        try{
+            String sql = "DELETE FROM vacunas WHERE IdMascotas = ?";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdMascota);
+            
+            
+            int filasEliminadas = ps.executeUpdate();
+            if (filasEliminadas > 0){
+                 System.out.println("Actualización exitosa");
+                 actualizacionExitosa= true;
+             } else {
+                 System.out.println("No se encontró al paciente con id: "+IdMascota);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido eliminar la fila: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                    
+                }
+            }
+         }
+         return actualizacionExitosa;
+        
+        
     }
     
 }
