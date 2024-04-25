@@ -307,4 +307,78 @@ public class ConsultasMascotasApp {
     ////////////////////////////////////////////////////////////////////////
     // MÉTODOS PARA LAS VACUNAS
     ////////////////////////////////////////////////////////////////////////
+    public boolean insertarVacunas(int IdMascota, String Fecha, String Enfermedad, String FechaProxima) throws SQLException {
+         PreparedStatement ps = null;
+        boolean InserccionExitosa = false;
+        try{
+            String sql = "INSERT INTO Vacunas VALUES (?,?,?,?);";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdMascota);
+            ps.setString(2, Fecha);
+            ps.setString(3,Enfermedad);
+            ps.setString(4,FechaProxima);
+           
+            int filasActualizadas = ps.executeUpdate();
+             
+             if (filasActualizadas > 0){
+                 System.out.println("Insercción exitosa");
+                 InserccionExitosa= true;
+             } else {
+                 System.out.println("No se encontró la vacuna con id: "+IdMascota);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido insertar ningún valor: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                   
+                }
+            }
+         }
+        return InserccionExitosa;
+     
+    }
+    public boolean modificarVacunas(int IdMascota, String Fecha, String Enfermedad,
+            String FechaProxima){
+        PreparedStatement ps = null;
+        boolean actualizacionExitosa = false;
+        try{
+            String sql = "UPDATE vacunas SET IdMascota = ?, Fecha = ?, "
+                    + "Enfermedad = ?, FechaProxima = ?;";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdMascota);
+            ps.setString(2, Fecha);
+            ps.setString(3,Enfermedad);
+            ps.setString(4,FechaProxima);
+            
+            int filasActualizadas = ps.executeUpdate();
+             
+             if (filasActualizadas > 0){
+                 System.out.println("Actualización exitosa");
+                 actualizacionExitosa= true;
+             } else {
+                 System.out.println("No se encontró la vacuna con id: "+IdMascota);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido modificar ningún valor: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                    
+                }
+            }
+         }
+         return actualizacionExitosa;
+    }
+    
 }
