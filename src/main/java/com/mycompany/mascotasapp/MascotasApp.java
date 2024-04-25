@@ -29,7 +29,7 @@ public class MascotasApp {
         //con1.insertarMascotas(1, 1, "Perico", "Cacatua", 
          //       "Alba", "Marrón", "2020-04-25", 2);
          
-         
-         System.out.println(con1.listadoPacientes());
+         con1.insertarPesos(1, "2020-10-01", 40);
+         //System.out.println(con1.listadoPacientes());
     }
 }

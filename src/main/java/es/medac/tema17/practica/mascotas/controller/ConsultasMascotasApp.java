@@ -17,12 +17,18 @@ import java.util.ArrayList;
  */
 public class ConsultasMascotasApp {
     
+    
+    // CONEXION
     private Connection conexion;
     
     public ConsultasMascotasApp(){
         this.conexion= new ConexionSQL().getConnection();
     }
     
+    
+    ////////////////////////////////////////////////////////////////////////
+    // MÉTODOS PARA LOS PACIENTES
+    ////////////////////////////////////////////////////////////////////////
     public boolean insertarMascotas(int IdMascota, int IdCliente, String AliasMascota,
             String Especie, String Raza, String ColorPelo, String FechaNacimiento,
             int Vacunaciones) throws SQLException{
@@ -176,7 +182,12 @@ public class ConsultasMascotasApp {
         }
         return pacientes;
     }
+    ////////////////////////////////////////////////////////////////////////
     
+    
+    ////////////////////////////////////////////////////////////////////////
+    // MÉTODOS PARA LOS CLIENTES
+    ////////////////////////////////////////////////////////////////////////
     public boolean insertarClientes(int IdCliente, String PrimerApellido,
             int CuentaBanco, int Telefono) throws SQLException{
         PreparedStatement ps = null;
@@ -215,4 +226,85 @@ public class ConsultasMascotasApp {
         return InserccionExitosa;
      
     }
+    ////////////////////////////////////////////////////////////////////////
+    
+    ////////////////////////////////////////////////////////////////////////
+    // MÉTODOS PARA LOS PESOS
+    ////////////////////////////////////////////////////////////////////////
+    public boolean insertarPesos(int IdMascota, String Fecha, double Peso) throws SQLException {
+         PreparedStatement ps = null;
+        boolean InserccionExitosa = false;
+        try{
+            String sql = "INSERT INTO Pesos VALUES (?,?,?);";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdMascota);
+            ps.setString(2, Fecha);
+            ps.setDouble(3,Peso);
+           
+            int filasActualizadas = ps.executeUpdate();
+             
+             if (filasActualizadas > 0){
+                 System.out.println("Insercción exitosa");
+                 InserccionExitosa= true;
+             } else {
+                 System.out.println("No se encontró la mascota con id: "+IdMascota);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido insertar ningún valor: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                   
+                }
+            }
+         }
+        return InserccionExitosa;
+     
+    }
+    
+    public boolean modificarPesos(int IdMascota, String Fecha, double Peso){
+        PreparedStatement ps = null;
+        boolean actualizacionExitosa = false;
+        try{
+            String sql = "UPDATE pesos SET IdMascota = ?, Fecha = ?,"
+                    + "Peso = ?;";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdMascota);
+            ps.setString(2, Fecha);
+            ps.setDouble(3,Peso);
+            
+            int filasActualizadas = ps.executeUpdate();
+             
+             if (filasActualizadas > 0){
+                 System.out.println("Actualización exitosa");
+                 actualizacionExitosa= true;
+             } else {
+                 System.out.println("No se encontró al paciente con id: "+IdMascota);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido modificar ningún valor: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                    
+                }
+            }
+         }
+         return actualizacionExitosa;
+    }
+    //////////////////////////////////////////////////////////////////////////
+    
+    ////////////////////////////////////////////////////////////////////////
+    // MÉTODOS PARA LAS VACUNAS
+    ////////////////////////////////////////////////////////////////////////
 }

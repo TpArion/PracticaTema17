@@ -12,7 +12,7 @@ public class pesos extends pacientes {
     
     private int IdMascota;
     private String Fecha;
-    private int Peso;
+    private double Peso;
     
     public pesos(){
         this.IdMascota= 0;
@@ -42,11 +42,11 @@ public class pesos extends pacientes {
         this.Fecha = Fecha;
     }
 
-    public int getPeso() {
+    public double getPeso() {
         return Peso;
     }
 
-    public void setPeso(int Peso) {
+    public void setPeso(double Peso) {
         this.Peso = Peso;
     }
     
