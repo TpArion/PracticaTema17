@@ -11,14 +11,14 @@ package es.medac.tema17.practica.mascotas.model;
 public class clientes {
     private int IdCliente;
     private String PrimerApellido;
-    private String CuentaBanco;
+    private int CuentaBanco;
     private int Telefono;
 
     
 
     //Constructores
     
-    public clientes(int IdCliente, String PrimerApellido, String CuentaBanco, int Telefono) {
+    public clientes(int IdCliente, String PrimerApellido, int CuentaBanco, int Telefono) {
         this.IdCliente = IdCliente;
         this.PrimerApellido = PrimerApellido;
         this.CuentaBanco = CuentaBanco;
@@ -28,7 +28,7 @@ public class clientes {
     public clientes() {
         this.IdCliente = 0;
         this.PrimerApellido= "Ninguno";
-        this.CuentaBanco = "Nada";
+        this.CuentaBanco = 0;
         this.Telefono = 0;
     }
     
@@ -56,11 +56,11 @@ public class clientes {
         this.PrimerApellido = PrimerApellido;
     }
 
-    public String getCuentaBanco() {
+    public int getCuentaBanco() {
         return CuentaBanco;
     }
 
-    public void setCuentaBanco(String CuentaBanco) {
+    public void setCuentaBanco(int CuentaBanco) {
         this.CuentaBanco = CuentaBanco;
     }
 

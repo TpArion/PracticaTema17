@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class ConexionSQL {
     protected Connection conexion;
-    String url = "jdbc:mysql://localhost:3306/clientes";
+    String url = "jdbc:mysql://localhost:3306/mascotasapp";
     String usuario = "Admin";
     String pwd = "admin12345678.";
     
