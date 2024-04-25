@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.mascotasapp;
+package es.medac.tema17.practica.mascotasapp;
 
 import es.medac.tema17.practica.mascotas.controller.ConexionSQL;
 import es.medac.tema17.practica.mascotas.controller.ConsultasMascotasApp;
