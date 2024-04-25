@@ -21,6 +21,13 @@ public class vacunas extends pacientes {
         this.FechaProxima = "0000-00-00";
     }
     
+    public vacunas(int IdMascota, String Fecha, String Enfermedad,
+            String FechaProxima){
+        this.IdMascota = IdMascota;
+        this.Fecha = Fecha;
+        this.Enfermedad = Enfermedad;
+        this.FechaProxima = FechaProxima;
+    }
     
     public int getIdMascota() {
         return IdMascota;
