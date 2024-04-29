@@ -173,6 +173,7 @@ public class ConsultasMascotasApp {
                 pacientes pacient = new pacientes(IdMascota,IdCliente, 
                 AliasMascota,Especie,Raza, ColorPelo,FechaNacimiento, Vacunaciones);
                 pacientes.add(pacient);
+                pacient.toString();
             }
             rs.close();
             ps.close();
@@ -481,6 +482,43 @@ public class ConsultasMascotasApp {
          return actualizacionExitosa;
         
         
+    }
+    
+    public boolean insertarPersonas(int IdPersona, String Nombre,String Apellido, int Telefono) throws SQLException{
+        PreparedStatement ps = null;
+        boolean InserccionExitosa = false;
+        try{
+            String sql = "INSERT INTO personas VALUES (?,?,?,?);";
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, IdPersona);
+            ps.setString(2, Nombre);
+            ps.setString(3,Apellido);
+            ps.setInt(4, Telefono);
+            
+            int filasActualizadas = ps.executeUpdate();
+             
+             if (filasActualizadas > 0){
+                 System.out.println("Insercción exitosa");
+                 InserccionExitosa= true;
+             } else {
+                 System.out.println("No se encontró a la persona con id: "+IdPersona);
+             }
+        } catch (SQLException ex){
+            System.out.println("No se ha podido insertar ningún valor: "
+            +ex.getMessage());
+        } finally {
+             if (ps != null){
+                try {
+                    ps.close();
+                    System.out.println("Conexión cerrada con éxito.");
+                }catch (SQLException e){
+                    System.out.println("Error al cerrar PreparedStatement: "+e.getMessage());
+                    
+                }
+            }
+         }
+        return InserccionExitosa;
+     
     }
     
 }

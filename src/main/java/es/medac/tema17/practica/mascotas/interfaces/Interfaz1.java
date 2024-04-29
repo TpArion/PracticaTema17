@@ -4,6 +4,8 @@
  */
 package es.medac.tema17.practica.mascotas.interfaces;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Andrés
@@ -15,6 +17,7 @@ public class Interfaz1 extends javax.swing.JFrame {
      */
     public Interfaz1() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,23 +30,50 @@ public class Interfaz1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jButtonGestionar = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
+        jButtonListados1 = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setText("Mascotas App");
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 100));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 400, 120));
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
-        jLabel2.setText("GESTIONAR DATOS");
-        jLabel2.setOpaque(true);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 160, 40));
+        jButtonGestionar.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonGestionar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButtonGestionar.setText("GESTIONAR DATOS");
+        jButtonGestionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonGestionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 230, 50));
+
+        jButtonSalir.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonSalir.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButtonSalir.setText("SALIR");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, 90, 30));
+
+        jButtonListados1.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonListados1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButtonListados1.setText("LISTADO DE MASCOTAS");
+        jButtonListados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListados1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonListados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 270, 50));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen.jpg"))); // NOI18N
         jLabelFondo.setText("jLabel1");
@@ -51,6 +81,27 @@ public class Interfaz1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarActionPerformed
+        // TODO add your handling code here:
+        GestionDeDatos gestiondedatos = new GestionDeDatos();
+        gestiondedatos.setVisible(true);
+        this.setVisible(false);
+        
+        JOptionPane.showMessageDialog(null, "Recuerda que para crear un paciente, primero necesitas crear un cliente.", "Recordatorio", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jButtonGestionarActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonListados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListados1ActionPerformed
+        // TODO add your handling code here:
+         ListadoDeMascotas listado = new ListadoDeMascotas();
+        listado.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonListados1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,8 +139,10 @@ public class Interfaz1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonGestionar;
+    private javax.swing.JButton jButtonListados1;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelFondo;
     // End of variables declaration//GEN-END:variables
 }

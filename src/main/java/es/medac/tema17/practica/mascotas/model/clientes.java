@@ -33,11 +33,16 @@ public class clientes {
     }
     
     //Metodos
-    @Override
-    public String toString() {
-        return "El cliente es" + this.IdCliente + ", su primer apellido es" 
-                + this.PrimerApellido + ", su cuenta del banco es "
-                + this.CuentaBanco + " y su teléfono es " + this.Telefono;
+    
+    public String imprimir() {
+        return "INFORME DEL CLIENTE CREADO" +"\n"
+                +"-----------------------" + "\n"
+                +"Su id es: "+this.IdCliente + "\n"
+                +"Su primer apellido es: " 
+                + this.PrimerApellido + "\n"
+                +"Su cuenta del banco es : "
+                + this.CuentaBanco +"\n"
+                +"Su teléfono es " + this.Telefono;
     }
     //Getter y Setters
     public int getIdCliente() {
