@@ -29,6 +29,16 @@ public class vacunas extends pacientes {
         this.FechaProxima = FechaProxima;
     }
     
+    public String imprimir(){
+        return "VACUNAS" + "\n" 
+                + "Id Mascota: "+this.IdMascota+ "\n"
+                + "Enfermedad: "+this.Enfermedad+ "\n"
+                + "Fecha: "+this.Fecha+ "\n"
+                + "Fecha Próxima: "+this.FechaProxima+ "\n";
+    }
+    
+    
+    
     public int getIdMascota() {
         return IdMascota;
     }

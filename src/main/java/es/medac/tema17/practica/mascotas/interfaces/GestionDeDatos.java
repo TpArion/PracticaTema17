@@ -6,10 +6,16 @@ package es.medac.tema17.practica.mascotas.interfaces;
 
 import es.medac.tema17.practica.mascotas.controller.ConsultasMascotasApp;
 import es.medac.tema17.practica.mascotas.model.clientes;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,9 +58,8 @@ public class GestionDeDatos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaInforme = new javax.swing.JTextArea();
         jButtonInsertarCliente = new javax.swing.JButton();
+        jButtonInsertarPacientes1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButtonInsertarPesos = new javax.swing.JButton();
-        jButtonInsertarVacunas = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +80,7 @@ public class GestionDeDatos extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 460, 110, 30));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 110, 30));
 
         jButtonVolver.setBackground(new java.awt.Color(204, 204, 255));
         jButtonVolver.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -85,12 +90,17 @@ public class GestionDeDatos extends javax.swing.JFrame {
                 jButtonVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 110, 30));
+        getContentPane().add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, 110, 30));
 
         jButtonInsertarPacientes.setBackground(new java.awt.Color(204, 204, 255));
         jButtonInsertarPacientes.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButtonInsertarPacientes.setText("INSERTAR PACIENTES");
-        getContentPane().add(jButtonInsertarPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, -1, 30));
+        jButtonInsertarPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertarPacientesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonInsertarPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 230, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel3.setText("Insercción de Clientes");
@@ -141,20 +151,20 @@ public class GestionDeDatos extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonInsertarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
 
+        jButtonInsertarPacientes1.setBackground(new java.awt.Color(204, 204, 255));
+        jButtonInsertarPacientes1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButtonInsertarPacientes1.setText("INSERTAR PACIENTES (TXT)");
+        jButtonInsertarPacientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertarPacientes1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonInsertarPacientes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 230, 30));
+
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 400, 300));
-
-        jButtonInsertarPesos.setBackground(new java.awt.Color(204, 204, 255));
-        jButtonInsertarPesos.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButtonInsertarPesos.setText("INSERTAR PESOS");
-        getContentPane().add(jButtonInsertarPesos, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 180, 30));
-
-        jButtonInsertarVacunas.setBackground(new java.awt.Color(204, 204, 255));
-        jButtonInsertarVacunas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jButtonInsertarVacunas.setText("INSERTAR VACUNAS");
-        getContentPane().add(jButtonInsertarVacunas, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 180, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/medac/tema17/practica/mascotas/interfaces/imagenes/imagen.jpg"))); // NOI18N
         jLabelFondo.setText("jLabel1");
@@ -219,6 +229,46 @@ public class GestionDeDatos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonInsertarClienteActionPerformed
 
+    private void jButtonInsertarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarPacientesActionPerformed
+        // TODO add your handling code here:
+        InsertarYModificarPacientes gestiondedatos = new InsertarYModificarPacientes();
+        gestiondedatos.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonInsertarPacientesActionPerformed
+
+    private void jButtonInsertarPacientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarPacientes1ActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        PreparedStatement ps = null;
+        boolean InserccionExitosa = false;
+        ConsultasMascotasApp con1 = new ConsultasMascotasApp();
+
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File archivo = fileChooser.getSelectedFile();
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(archivo));
+                StringBuilder consulta = new StringBuilder();
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    consulta.append(linea).append("\n");
+                }
+                br.close();
+
+                boolean exito = con1.insertarMascotasTXT(consulta.toString());
+                if (exito) {
+                    JOptionPane.showMessageDialog(this, "Inserción exitosa", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al insertar pacientes", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (IOException | SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error al leer el archivo o ejecutar la consulta: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonInsertarPacientes1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,8 +307,7 @@ public class GestionDeDatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonInsertarCliente;
     private javax.swing.JButton jButtonInsertarPacientes;
-    private javax.swing.JButton jButtonInsertarPesos;
-    private javax.swing.JButton jButtonInsertarVacunas;
+    private javax.swing.JButton jButtonInsertarPacientes1;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;

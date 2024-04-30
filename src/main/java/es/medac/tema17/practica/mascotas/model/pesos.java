@@ -17,10 +17,16 @@ public class pesos extends pacientes {
     public pesos(){
         this.IdMascota= 0;
         this.Fecha= "0000-00-00";
-        this.Peso= 0;
+        this.Peso= 0.0;
     }
 
-    public pesos(int IdMascota, String Fecha, int Peso) {
+    public String imprimir(){
+        return "PESOS" + "\n" 
+                + "Id Mascota: "+this.IdMascota+ "\n"
+                + "Peso: "+this.Peso+ "\n"
+                + "Fecha: "+this.Fecha+ "\n";
+    }
+    public pesos(int IdMascota, String Fecha, double Peso) {
         this.IdMascota = IdMascota;
         this.Fecha = Fecha;
         this.Peso = Peso;

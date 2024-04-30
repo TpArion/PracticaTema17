@@ -45,13 +45,31 @@ public class pacientes {
         this.FechaNacimiento = FechaNacimiento;
         this.Vacunaciones = Vacunaciones;
     }
+    public pacientes(int IdMascota, 
+            String AliasMascota, String Especie, String Raza, 
+            String ColorPelo, String FechaNacimiento,
+            int Vacunaciones) {
+        this.IdMascota = IdMascota;
+        this.AliasMascota = AliasMascota;
+        this.Especie = Especie;
+        this.Raza = Raza;
+        this.ColorPelo = ColorPelo;
+        this.FechaNacimiento = FechaNacimiento;
+        this.Vacunaciones = Vacunaciones;
+    }
     //Metodo ToString
-    public String toString (){
-        return "Su id de Mascota es "+ this.IdMascota+ ", su id de Cliente es "+
-                this.IdCliente+", su alias de mascota es "+this.AliasMascota+", "
-                + "su espiece es: "+this.Especie+", su raza es "+this.Raza+", "
-                + "su color de pelo es "+this.ColorPelo+", su fecha de nacimiento es "
-                +this.FechaNacimiento+" y sus vacunaciones son "+this.Vacunaciones;
+    public String imprimir (){
+        return "GESTIÓN DE DATOS" + "\n"
+                + "Id Mascota: "+this.IdMascota+ "\n"
+                + "Id Cliente: "+this.IdCliente+ "\n"
+                + "Alias Mascota: "+this.AliasMascota+ "\n"
+                + "Especie: "+this.Especie+ "\n"
+                + "Raza: "+this.Raza+ "\n"
+                + "ColorPelo: "+this.ColorPelo+ "\n"
+                + "FechaNacimiento: "+this.FechaNacimiento+ "\n"
+                + "Vacunaciones: "+this.Vacunaciones;
+                
+                        
     }
     
     //Getters Y Setters.
