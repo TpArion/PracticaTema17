@@ -342,6 +342,9 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
     private void jButtonInsertarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarPacienteActionPerformed
         // TODO add your handling code here:
+        
+        //Botón para insertar los pacientes, no tiene misterio, tomar las variables
+        //de los textfield y meterlas en la creación de un objeto con su método.
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
 
@@ -358,7 +361,7 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
         pacientes pa1 = new pacientes(IdMascota, IdCliente, AliasMascota, Especie,
                 Raza, ColorPelo, FechaNacimiento, Vacunaciones);
-        String informe = pa1.toString();
+        String informe = pa1.imprimir();
         jTextAreaInforme.setText("Ha insertado lo siguiente: " + informe);
 
         try {
@@ -391,6 +394,9 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
+        
+        //Botón para modificar los pacientes, no tiene misterio, tomar las variables
+        //de los textfield y meterlas en la creación de un objeto con su método.
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
 
@@ -429,6 +435,9 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         // TODO add your handling code here:
+        
+        //Botón para eliminar los pacientes, no tiene misterio, tomar las variables
+        //de los textfield y meterlas en la creación de un objeto con su método.
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
 
@@ -437,9 +446,9 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
         ConsultasMascotasApp con1 = new ConsultasMascotasApp();
 
         try {
-            con1.eliminarMascota(IdPaciente);
             con1.eliminarPesos(IdPaciente);
             con1.eliminarVacunas(IdPaciente);
+            con1.eliminarMascota(IdPaciente);
             int filasActualizadas = ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -451,6 +460,8 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        //Entra a la interfaz para añadir pesos
         InsertarPesos gestiondedatos = new InsertarPesos();
         gestiondedatos.setVisible(true);
         this.setVisible(false);
@@ -458,6 +469,7 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //Entra a la interfaz para añadir vacunas
         InsertarVacunas gestiondedatos = new InsertarVacunas();
         gestiondedatos.setVisible(true);
         this.setVisible(false);
@@ -465,6 +477,7 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
     private void jButtonModificarPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarPesoActionPerformed
         // TODO add your handling code here:
+        //Entra a la interfaz para modificar pesos
         ModificarPesos gestiondedatos = new ModificarPesos();
         gestiondedatos.setVisible(true);
         this.setVisible(false);
@@ -472,6 +485,7 @@ public class InsertarYModificarPacientes extends javax.swing.JFrame {
 
     private void jButtonModificarVacunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarVacunasActionPerformed
         // TODO add your handling code here:
+        //Entra a la interfaz para modificar vacunas
         ModificarVacunas gestiondedatos = new  ModificarVacunas();
         gestiondedatos.setVisible(true);
         this.setVisible(false);

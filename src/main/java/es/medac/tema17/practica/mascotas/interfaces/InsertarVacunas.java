@@ -45,6 +45,7 @@ public class InsertarVacunas extends javax.swing.JFrame {
         jButtonInsertarPeso = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         jTextFieldFechaProxima = new javax.swing.JTextField();
+        jButtonEliminarVacunas = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -64,7 +65,7 @@ public class InsertarVacunas extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 100, 120));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 100, 120));
 
         jButtonSalir.setBackground(new java.awt.Color(204, 204, 255));
         jButtonSalir.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -82,7 +83,7 @@ public class InsertarVacunas extends javax.swing.JFrame {
                 jButtonInsertarPesoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonInsertarPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        getContentPane().add(jButtonInsertarPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jButtonVolver.setBackground(new java.awt.Color(204, 204, 255));
         jButtonVolver.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -94,6 +95,14 @@ public class InsertarVacunas extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
         getContentPane().add(jTextFieldFechaProxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 60, -1));
+
+        jButtonEliminarVacunas.setText("ELIMINAR");
+        jButtonEliminarVacunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarVacunasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEliminarVacunas, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Fecha Próxima:");
@@ -131,6 +140,8 @@ public class InsertarVacunas extends javax.swing.JFrame {
 
     private void jButtonInsertarPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarPesoActionPerformed
         // TODO add your handling code here:
+        
+        //Botón para insertar la vacuna
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
 
@@ -174,6 +185,20 @@ public class InsertarVacunas extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
+    private void jButtonEliminarVacunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarVacunasActionPerformed
+        // TODO add your handling code here:
+        PreparedStatement ps = null;
+        boolean InserccionExitosa = false;
+        
+        int IdMascota = Integer.parseInt(jTextFieldIdMascota.getText());
+        
+        ConsultasMascotasApp con1 = new ConsultasMascotasApp();
+        
+        con1.eliminarVacunas(IdMascota);
+        
+        jTextArea1.setText("Se ha"+ "\n"+ "eliminado la vacuna"+"\n"+"correctamente.");
+    }//GEN-LAST:event_jButtonEliminarVacunasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -211,6 +236,7 @@ public class InsertarVacunas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEliminarVacunas;
     private javax.swing.JButton jButtonInsertarPeso;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonVolver;

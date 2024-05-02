@@ -43,6 +43,7 @@ public class InsertarPesos extends javax.swing.JFrame {
         jButtonSalir = new javax.swing.JButton();
         jButtonInsertarPeso = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
+        jButtonElimnarPeso = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -61,7 +62,7 @@ public class InsertarPesos extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 100, 120));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 90, 120));
 
         jButtonSalir.setBackground(new java.awt.Color(204, 204, 255));
         jButtonSalir.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -79,7 +80,7 @@ public class InsertarPesos extends javax.swing.JFrame {
                 jButtonInsertarPesoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonInsertarPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        getContentPane().add(jButtonInsertarPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jButtonVolver.setBackground(new java.awt.Color(204, 204, 255));
         jButtonVolver.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -90,6 +91,14 @@ public class InsertarPesos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
+
+        jButtonElimnarPeso.setText("ELIMINAR");
+        jButtonElimnarPeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonElimnarPesoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonElimnarPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 90, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Fecha Actual:");
@@ -112,7 +121,7 @@ public class InsertarPesos extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 270, 150));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 150));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/medac/tema17/practica/mascotas/interfaces/imagenes/imagen.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -123,6 +132,8 @@ public class InsertarPesos extends javax.swing.JFrame {
 
     private void jButtonInsertarPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarPesoActionPerformed
         // TODO add your handling code here:
+        
+        //Botón para insertar el peso
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
 
@@ -165,6 +176,21 @@ public class InsertarPesos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
+    private void jButtonElimnarPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElimnarPesoActionPerformed
+        // TODO add your handling code here:
+        //Botón para insertar el peso
+        PreparedStatement ps = null;
+        boolean InserccionExitosa = false;
+        
+        int IdMascota = Integer.parseInt(jTextFieldIdMascota.getText());
+        
+        ConsultasMascotasApp con1 = new ConsultasMascotasApp();
+        
+        con1.eliminarPesos(IdMascota);
+        
+        jTextArea1.setText("Se ha"+ "\n"+ "eliminado el peso"+"\n"+"correctamente.");
+    }//GEN-LAST:event_jButtonElimnarPesoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,6 +227,7 @@ public class InsertarPesos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonElimnarPeso;
     private javax.swing.JButton jButtonInsertarPeso;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonVolver;

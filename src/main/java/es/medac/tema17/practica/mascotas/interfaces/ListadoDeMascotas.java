@@ -180,7 +180,7 @@ public class ListadoDeMascotas extends javax.swing.JFrame {
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         // TODO add your handling code here:
-        GestionDeDatos gestiondedatos = new GestionDeDatos();
+        Interfaz1 gestiondedatos = new Interfaz1();
         gestiondedatos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonVolverActionPerformed

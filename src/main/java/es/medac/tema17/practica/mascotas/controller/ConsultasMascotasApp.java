@@ -27,11 +27,19 @@ public class ConsultasMascotasApp {
     ////////////////////////////////////////////////////////////////////////
     // MÉTODOS PARA LOS PACIENTES
     ////////////////////////////////////////////////////////////////////////
+    
+    
+    //Método para la insercción de Mascotas (Pacientes), se necesitará de la
+    //insercción de un Cliente para poder introducir una mascota.
     public boolean insertarMascotas(int IdMascota, int IdCliente, String AliasMascota,
             String Especie, String Raza, String ColorPelo, String FechaNacimiento,
             int Vacunaciones) throws SQLException {
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
+        
+        //Utilizamos lo visto anteriormente con el profesor, en este caso, la
+        //utilización de los "ps" o PreparedStatement donde alojaremos las variables
+        //que necesitamos para colocar en nuestro string sql "?".
         try {
             String sql = "INSERT INTO pacientes VALUES (?,?,?,?,?,?,?,?);";
             ps = conexion.prepareStatement(sql);
@@ -70,6 +78,11 @@ public class ConsultasMascotasApp {
 
     }
     
+    
+    //Método para introducir a las mascotas mediante un TXT.
+    //La utilización de este método viene ligada a su contraparte en la aplicación
+    //pues necesita de la variable String "consulta" que será aquella que almacene
+    //lo que el txt tiene escrito.
     public boolean insertarMascotasTXT(String consulta) throws SQLException {
     PreparedStatement ps = null;
     boolean insercionExitosa = false;
@@ -100,6 +113,11 @@ public class ConsultasMascotasApp {
     return insercionExitosa;
 }
 
+    //Con este método tuve bastantes problemas pues, me cegué completamente
+    //en que el IdCliente debía modificarse también pero, no era así. Tras
+    //hora y media de sufrimiento buscando el problema, le pregunté a un compañero
+    //y me dió la clave para hacerlo funcionar; quitar el IdCliente de las variables
+    //a pedir. Funcionó.
     public boolean modificarMascotas(int IdMascota, String AliasMascota,
             String Especie, String Raza, String ColorPelo, String FechaNacimiento,
             int Vacunaciones) {
@@ -117,14 +135,13 @@ public class ConsultasMascotasApp {
                     + "WHERE IdMascotas = ?; ";
 
             ps = conexion.prepareStatement(sql);
-            ps.setInt(7, IdMascota);
             ps.setString(1, AliasMascota);
             ps.setString(2, Especie);
             ps.setString(3, Raza);
             ps.setString(4, ColorPelo);
             ps.setString(5, FechaNacimiento);
             ps.setInt(6, Vacunaciones);
-
+            ps.setInt(7, IdMascota);
             int filasActualizadas = ps.executeUpdate();
 
             if (filasActualizadas > 0) {
@@ -150,6 +167,9 @@ public class ConsultasMascotasApp {
         return actualizacionExitosa;
     }
 
+    
+    //El método para eliminar una mascota, no tiene mucho más misterio, le 
+    //introduces una IdMascota.
     public boolean eliminarMascota(int IdMascota) {
         PreparedStatement ps = null;
         boolean actualizacionExitosa = false;
@@ -183,6 +203,10 @@ public class ConsultasMascotasApp {
 
     }
 
+    //Este es el método con el que hacemos un listado completo.
+    //Se toma una consulta con todos los datos, un while y la creación de un objeto
+    //"pacientes" para almacenar las variables de esa primera vuelta del bucle.
+    //Se devuelve el método "imprimir" que es un toString.
     public String obtenerTextoPacientes() {
         StringBuilder texto = new StringBuilder();
 
@@ -216,6 +240,9 @@ public class ConsultasMascotasApp {
         return texto.toString();
     }
 
+    
+    //Este caso tiene una base al 90% exacta al anterior método, con solo un cambio
+    //y es que la consulta está hecha para tomar a los 3 primeros del top.
     public String obtenerTextoTopMascotasConMasVacunas(int cantidad) {
         StringBuilder texto = new StringBuilder();
 
@@ -224,7 +251,10 @@ public class ConsultasMascotasApp {
                     + "Raza, Color_Pelo, Fecha_Nacimiento, Vacunaciones FROM "
                     + "pacientes ORDER BY Vacunaciones DESC LIMIT ?";
             PreparedStatement ps = conexion.prepareStatement(sql);
-            ps.setInt(1, cantidad); // Establecer el límite de resultados
+            //Aquí se puede observar como nuestro limit de rows es "?"
+            //Pues, si quisiesemos, podríamos introducir aquí mismo el número
+            //de pacientes que querramos en el top, pero preferí dejarlo a elección.
+            ps.setInt(1, cantidad); 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -250,6 +280,7 @@ public class ConsultasMascotasApp {
         return texto.toString();
     }
 
+    //Exactamente lo mismo que el método anterior.
     public String obtenerTextoTopMascotasMasPesadas(int cantidad) {
         StringBuilder texto = new StringBuilder();
 
@@ -286,6 +317,7 @@ public class ConsultasMascotasApp {
         return texto.toString();
     }
 
+    //Más de lo mismo, solo cambia la consulta.
     public String obtenerTextoTopMascotasMenosPesadas(int cantidad) {
         StringBuilder texto = new StringBuilder();
 
@@ -322,6 +354,7 @@ public class ConsultasMascotasApp {
         return texto.toString();
     }
 
+    //Lo mismo.
     public String obtenerRecuentoPorEspecie() {
         StringBuilder texto = new StringBuilder();
 
@@ -641,6 +674,11 @@ public class ConsultasMascotasApp {
 
     }
 
+    
+    
+    //////////////////////////////////////////////////////////////
+    // Métodos para las personas
+    //////////////////////////////////////////////////////////////
     public boolean insertarPersonas(int IdPersona, String Nombre, String Apellido, int Telefono) throws SQLException {
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;

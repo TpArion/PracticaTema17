@@ -84,6 +84,8 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     private void jButtonGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarActionPerformed
         // TODO add your handling code here:
+        
+        //Abre la gestión de datos.
         GestionDeDatos gestiondedatos = new GestionDeDatos();
         gestiondedatos.setVisible(true);
         this.setVisible(false);
@@ -93,11 +95,15 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
+        
+        //Sales de la app.
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonListados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListados1ActionPerformed
         // TODO add your handling code here:
+        
+        //Abres el listado.
          ListadoDeMascotas listado = new ListadoDeMascotas();
         listado.setVisible(true);
         this.setVisible(false);

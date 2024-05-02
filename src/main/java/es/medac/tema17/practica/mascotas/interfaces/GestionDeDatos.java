@@ -175,11 +175,16 @@ public class GestionDeDatos extends javax.swing.JFrame {
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         // TODO add your handling code here:
+        
+        //Salir de la app.
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         // TODO add your handling code here:
+        
+        // Botón para volver a la página anterior
+        
         Interfaz1 gestiondedatos = new Interfaz1();
         gestiondedatos.setVisible(true);
         this.setVisible(false);
@@ -191,6 +196,10 @@ public class GestionDeDatos extends javax.swing.JFrame {
 
     private void jButtonInsertarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarClienteActionPerformed
         // TODO add your handling code here:
+        
+        
+        //Botón para insertar clientes.
+        
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
         
@@ -231,6 +240,8 @@ public class GestionDeDatos extends javax.swing.JFrame {
 
     private void jButtonInsertarPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarPacientesActionPerformed
         // TODO add your handling code here:
+        
+        //Botón para abrir la gestión para insercción de pacientes.
         InsertarYModificarPacientes gestiondedatos = new InsertarYModificarPacientes();
         gestiondedatos.setVisible(true);
         this.setVisible(false);
@@ -238,7 +249,11 @@ public class GestionDeDatos extends javax.swing.JFrame {
 
     private void jButtonInsertarPacientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertarPacientes1ActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
+        
+        
+        
+        //Botón para insertar los datos de un txt
+        
         PreparedStatement ps = null;
         boolean InserccionExitosa = false;
         ConsultasMascotasApp con1 = new ConsultasMascotasApp();
